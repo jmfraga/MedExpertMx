@@ -227,6 +227,42 @@
             color: var(--primary);
         }
 
+        /* How It Works Section */
+        .how-it-works {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .diagram-container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .diagram-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 137, 123, 0.2);
+            border: 1px solid var(--border);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -283,7 +319,16 @@
                 <a href="mailto:info@medexpert.mx" class="btn btn-secondary">Contacto</a>
             </div>
         </div>
+    </div>
 
+    <section class="how-it-works">
+        <h2>¿Cómo funciona?</h2>
+        <div class="diagram-container">
+            <img src="assets/diagram.png" alt="Flujo de funcionamiento de Medexpert: Mensaje → Transcripción → RAG → LLM → Respuesta → Decisiones médicas" />
+        </div>
+    </section>
+
+    <div class="hero" style="min-height: auto; padding: 2rem 0; background: transparent;">
         <footer>
             <p>&copy; 2026 Medexpert. Todos los derechos reservados.</p>
             <div class="social-links">
