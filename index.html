@@ -3,346 +3,526 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medexpert - Soluciones Médicas</title>
-    <meta name="description" content="Medexpert: Innovación en servicios médicos profesionales">
+    <title>MedExpert - Asistente Clínico con IA para Oncología</title>
+    <meta name="description" content="MedExpert: Tu asistente clínico con IA basado en +120,000 fragmentos de guías clínicas. Consultas ilimitadas en oncología.">
+    <meta name="theme-color" content="#0f172a">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                            teal: '#14b8a6',
+                            'teal-dark': '#0d9488',
+                            blue: '#0ea5e9',
+                            'blue-dark': '#0284c7',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-soft': 'pulse-soft 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'pulse-soft': {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.8' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #00897b;
-            --primary-dark: #00695c;
-            --secondary: #1976d2;
-            --background: #0d1117;
-            --surface: #161b22;
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --border: #30363d;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--background);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(0, 137, 123, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -100px;
-            right: -100px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(25, 118, 210, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            bottom: -50px;
-            left: -50px;
-            animation: float 8s ease-in-out infinite reverse;
-        }
-
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 800px;
-            padding: 2rem;
+        
+        .gradient-teal-blue {
+            background: linear-gradient(135deg, #14b8a6 0%, #0ea5e9 100%);
         }
-
-        .logo {
-            margin-bottom: 1.5rem;
-            animation: slideDown 0.8s ease-out;
+        
+        .gradient-dark {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
-
-        .logo img {
-            max-width: 300px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            filter: drop-shadow(0 8px 16px rgba(0, 137, 123, 0.2));
-        }
-
-        .logo-text {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            animation: slideDown 0.8s ease-out 0.1s both;
-        }
-
-        .tagline {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            animation: slideDown 0.8s ease-out 0.2s both;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: var(--surface);
-            border: 1px solid var(--primary);
-            border-radius: 50px;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-            animation: slideDown 0.8s ease-out 0.3s both;
-        }
-
-        .coming-soon {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            animation: slideDown 0.8s ease-out 0.4s both;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            animation: slideDown 0.8s ease-out 0.5s both;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: slideDown 0.8s ease-out 0.6s both;
-        }
-
-        .btn {
-            padding: 0.9rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
+        
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 137, 123, 0.3);
+            @apply px-6 py-3 rounded-lg font-semibold transition duration-300 text-white shadow-lg;
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
         }
-
+        
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 137, 123, 0.4);
+            @apply shadow-xl transform -translate-y-1;
         }
-
+        
         .btn-secondary {
+            @apply px-6 py-3 rounded-lg font-semibold transition duration-300 border-2 border-teal-500 text-teal-400;
             background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
         }
-
+        
         .btn-secondary:hover {
-            background: rgba(0, 137, 123, 0.1);
-            transform: translateY(-2px);
+            @apply bg-teal-500 bg-opacity-10 transform -translate-y-1;
         }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        
+        .card-glass {
+            @apply bg-slate-800 bg-opacity-50 backdrop-blur border border-slate-700 rounded-xl p-6;
         }
-
-        /* Footer */
-        footer {
-            position: absolute;
-            bottom: 2rem;
-            width: 100%;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            animation: fadeIn 1.2s ease-out 1s both;
+        
+        .section-title {
+            @apply text-4xl font-bold text-white mb-4;
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .social-links {
-            margin-top: 1rem;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .social-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary);
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            min-height: 100vh;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .how-it-works h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .diagram-container {
-            max-width: 1200px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-        }
-
-        .diagram-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 137, 123, 0.2);
-            border: 1px solid var(--border);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 2rem 0;
-            }
-
-            .logo img {
-                max-width: 200px;
-            }
-
-            .logo-text {
-                font-size: 2.5rem;
-            }
-
-            .coming-soon {
-                font-size: 1.5rem;
-            }
-
-            .tagline {
-                font-size: 1.05rem;
-            }
-
-            .cta-group {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            footer {
-                bottom: 1rem;
-            }
+        
+        .section-subtitle {
+            @apply text-slate-300 text-lg mb-12;
         }
     </style>
 </head>
-<body>
-    <div class="hero">
-        <div class="hero-content">
-            <div class="logo">
-                <img src="assets/logo.jpg" alt="Medexpert Logo" />
+<body class="bg-medical-900 text-slate-100">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-medical-900 bg-opacity-95 backdrop-blur border-b border-slate-700 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="assets/logo.jpg" alt="MedExpert Logo" class="h-10 w-10 rounded-lg">
+                <span class="font-bold text-xl text-white hidden sm:inline">MedExpert</span>
             </div>
-            <h1 class="logo-text">Medexpert</h1>
-            <p class="tagline">Innovación en servicios médicos profesionales</p>
-            
-            <div class="status-badge">EN DESARROLLO</div>
-            
-            <h2 class="coming-soon">Próximamente</h2>
-            <p class="subtitle">Estamos construyendo la plataforma de salud del futuro. Mantente atento a actualizaciones.</p>
-            
-            <div class="cta-group">
-                <button class="btn btn-primary" onclick="notify()">Notifícame</button>
-                <a href="mailto:info@medexpert.mx" class="btn btn-secondary">Contacto</a>
+            <div class="flex gap-4 items-center">
+                <a href="https://t.me/MedExpertOncologiaBot" target="_blank" class="text-teal-400 hover:text-teal-300 transition text-sm sm:text-base">Bot</a>
+                <a href="#pricing" class="text-slate-300 hover:text-white transition text-sm sm:text-base">Planes</a>
+                <a href="#faq" class="text-slate-300 hover:text-white transition text-sm sm:text-base">FAQ</a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <section class="how-it-works">
-        <h2>¿Cómo funciona?</h2>
-        <div class="diagram-container">
-            <img src="assets/diagram.png" alt="Flujo de funcionamiento de Medexpert: Mensaje → Transcripción → RAG → LLM → Respuesta → Decisiones médicas" />
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 gradient-dark">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 right-10 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+            <div class="absolute -bottom-8 -left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style="animation-delay: 2s;"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <div class="mb-8 animate-fade-in">
+                <img src="assets/logo.jpg" alt="MedExpert" class="h-20 w-20 mx-auto rounded-2xl shadow-2xl mb-6">
+            </div>
+
+            <h1 class="text-5xl sm:text-7xl font-bold text-white mb-6 leading-tight">
+                Tu asistente clínico<br><span class="gradient-teal-blue bg-clip-text text-transparent">con IA</span>
+            </h1>
+
+            <p class="text-xl sm:text-2xl text-slate-300 mb-8 max-w-2xl mx-auto">
+                Consultas clínicas instantáneas basadas en +120,000 fragmentos de guías NCCN, ESMO, IMSS y NCI
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <a href="https://t.me/MedExpertOncologiaBot" target="_blank" class="btn-primary">
+                    Acceder al Bot de Telegram →
+                </a>
+                <a href="#plans" class="btn-secondary">
+                    Ver Planes
+                </a>
+            </div>
+
+            <div class="text-slate-400 text-sm">
+                <p>5 consultas gratis • Sin tarjeta de crédito • Especialidad: Oncología</p>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
         </div>
     </section>
 
-    <div class="hero" style="min-height: auto; padding: 2rem 0; background: transparent;">
-        <footer>
-            <p>&copy; 2026 Medexpert. Todos los derechos reservados.</p>
-            <div class="social-links">
-                <a href="#" title="Twitter">𝕏</a>
-                <a href="#" title="LinkedIn">in</a>
-                <a href="#" title="Instagram">📷</a>
+    <!-- How It Works Section -->
+    <section class="py-20 px-4 sm:px-6 gradient-dark">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="section-title text-center">¿Cómo funciona?</h2>
+            <p class="section-subtitle text-center">Tres pasos simples para respuestas clínicas respaldadas en evidencia</p>
+
+            <!-- Steps -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Step 1 -->
+                <div class="card-glass text-center hover:border-teal-500 transition">
+                    <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+                        1
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Haz tu pregunta</h3>
+                    <p class="text-slate-300">
+                        Envia tu consulta clínica por voz o texto. MedExpert transcribe y procesa tu pregunta en segundos.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="card-glass text-center hover:border-teal-500 transition">
+                    <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+                        2
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">IA busca en guías</h3>
+                    <p class="text-slate-300">
+                        Nuestro motor RAG indexa +120,000 fragmentos de guías clínicas y encuentra respuestas relevantes al instante.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="card-glass text-center hover:border-teal-500 transition">
+                    <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+                        3
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Respuesta con referencias</h3>
+                    <p class="text-slate-300">
+                        Recibes respuesta fundamentada con citas de guías oficiales. Exporta a PDF para tu registro clínico.
+                    </p>
+                </div>
             </div>
-        </footer>
-    </div>
+
+            <!-- Diagram -->
+            <div class="card-glass">
+                <img src="assets/diagram.png" alt="Flujo de MedExpert: Pregunta → Transcripción → RAG → LLM → Respuesta clínica" class="w-full rounded-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sources Section -->
+    <section class="py-20 px-4 sm:px-6 bg-medical-900 relative">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="section-title text-center">Respaldado por guías clínicas de clase mundial</h2>
+            <p class="section-subtitle text-center">Indexamos fragmentos de las principales guías internacionales</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-items-center">
+                <!-- NCCN -->
+                <div class="card-glass w-full text-center py-8 hover:border-teal-500 transition">
+                    <div class="text-3xl font-bold text-teal-400 mb-2">NCCN</div>
+                    <p class="text-sm text-slate-400">National Comprehensive<br>Cancer Network</p>
+                </div>
+
+                <!-- ESMO -->
+                <div class="card-glass w-full text-center py-8 hover:border-teal-500 transition">
+                    <div class="text-3xl font-bold text-blue-400 mb-2">ESMO</div>
+                    <p class="text-sm text-slate-400">European Society<br>Medical Oncology</p>
+                </div>
+
+                <!-- IMSS -->
+                <div class="card-glass w-full text-center py-8 hover:border-teal-500 transition">
+                    <div class="text-3xl font-bold text-emerald-400 mb-2">IMSS</div>
+                    <p class="text-sm text-slate-400">Guías de Práctica<br>Clínica México</p>
+                </div>
+
+                <!-- NCI -->
+                <div class="card-glass w-full text-center py-8 hover:border-teal-500 transition">
+                    <div class="text-3xl font-bold text-indigo-400 mb-2">NCI</div>
+                    <p class="text-sm text-slate-400">National Cancer<br>Institute PDQ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 px-4 sm:px-6 gradient-dark scroll-mt-16">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="section-title text-center">Planes y Precios</h2>
+            <p class="section-subtitle text-center">Elige el plan que mejor se adapte a tus necesidades</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Free Plan -->
+                <div class="card-glass border-2 border-slate-600 relative">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Prueba Gratuita</h3>
+                        <div class="text-4xl font-bold gradient-teal-blue bg-clip-text text-transparent">$0</div>
+                        <p class="text-slate-400 text-sm mt-2">Primeras 5 consultas</p>
+                    </div>
+                    <ul class="space-y-3 text-slate-300 mb-6 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>5 consultas incluidas</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Respuestas con referencias</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Exportar a PDF</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-500 font-bold mt-1">✗</span>
+                            <span class="text-slate-500">Profundizar ilimitado</span>
+                        </li>
+                    </ul>
+                    <button class="w-full btn-secondary">Comenzar</button>
+                </div>
+
+                <!-- Basic Plan -->
+                <div class="card-glass border-2 border-teal-500 relative transform md:scale-105">
+                    <div class="absolute -top-4 left-4 bg-teal-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        Más Popular
+                    </div>
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Plan Básico</h3>
+                        <div class="text-5xl font-bold text-white">$14.99</div>
+                        <p class="text-slate-400 text-sm mt-2">USD/mes • Precios de lanzamiento</p>
+                    </div>
+                    <ul class="space-y-3 text-slate-300 mb-6 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Consultas <strong>ilimitadas</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Respuestas con referencias</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Exportar a PDF</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Profundizar con GPT-OSS 120B</span>
+                        </li>
+                    </ul>
+                    <a href="https://t.me/MedExpertOncologiaBot" target="_blank" class="block w-full btn-primary text-center">Suscribirse</a>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="card-glass border-2 border-slate-600 relative">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Plan Premium</h3>
+                        <div class="text-4xl font-bold gradient-teal-blue bg-clip-text text-transparent">$24.99</div>
+                        <p class="text-slate-400 text-sm mt-2">USD/mes • Precios de lanzamiento</p>
+                    </div>
+                    <ul class="space-y-3 text-slate-300 mb-6 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Consultas <strong>ilimitadas</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Respuestas con referencias</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Exportar a PDF</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Profundizar con Claude Opus</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-teal-400 font-bold mt-1">✓</span>
+                            <span>Soporte prioritario</span>
+                        </li>
+                    </ul>
+                    <a href="https://t.me/MedExpertOncologiaBot" target="_blank" class="block w-full btn-secondary text-center">Suscribirse</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 px-4 sm:px-6 bg-medical-900 scroll-mt-16">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="section-title text-center">Preguntas Frecuentes</h2>
+            <p class="section-subtitle text-center">Resolvemos tus dudas sobre privacidad, precisión y para quién es MedExpert</p>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="card-glass cursor-pointer group" onclick="toggleFAQ(this)">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-white">¿Es seguro enviar datos de pacientes?</h3>
+                        <span class="text-teal-400 text-xl group-open:rotate-180 transition">+</span>
+                    </div>
+                    <p class="text-slate-300 mt-4 hidden group-open:block">
+                        Sí. MedExpert no almacena datos personales de pacientes. Las consultas se procesan con encriptación end-to-end y cumplen regulaciones HIPAA y GDPR. Recomendamos no incluir identificadores directos (nombres, RFCs) en tus preguntas.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="card-glass cursor-pointer group" onclick="toggleFAQ(this)">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-white">¿Qué tan preciso es?</h3>
+                        <span class="text-teal-400 text-xl group-open:rotate-180 transition">+</span>
+                    </div>
+                    <p class="text-slate-300 mt-4 hidden group-open:block">
+                        MedExpert se basa en +120,000 fragmentos de guías clínicas verificadas. Sin embargo, es una <strong>herramienta de apoyo, no reemplaza tu criterio médico</strong>. Siempre valida respuestas con fuentes oficiales y tu experiencia clínica.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="card-glass cursor-pointer group" onclick="toggleFAQ(this)">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-white">¿Para quién es MedExpert?</h3>
+                        <span class="text-teal-400 text-xl group-open:rotate-180 transition">+</span>
+                    </div>
+                    <p class="text-slate-300 mt-4 hidden group-open:block">
+                        MedExpert está diseñado para:
+                        <br>✓ Médicos oncólogos en Latinoamérica
+                        <br>✓ Residentes y fellows en oncología
+                        <br>✓ Médicos generales que atienden pacientes oncológicos
+                        <br>No es para auto-diagnóstico de pacientes.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="card-glass cursor-pointer group" onclick="toggleFAQ(this)">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-white">¿Cuándo se agregan nuevas especialidades?</h3>
+                        <span class="text-teal-400 text-xl group-open:rotate-180 transition">+</span>
+                    </div>
+                    <p class="text-slate-300 mt-4 hidden group-open:block">
+                        Actualmente ofrecemos <strong>Oncología</strong>. Próximamente lanzaremos <strong>Cardiología</strong> y otras especialidades. Suscríbete para recibir notificaciones cuando se agreguen nuevas.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="card-glass cursor-pointer group" onclick="toggleFAQ(this)">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-white">¿Puedo cancelar mi suscripción?</h3>
+                        <span class="text-teal-400 text-xl group-open:rotate-180 transition">+</span>
+                    </div>
+                    <p class="text-slate-300 mt-4 hidden group-open:block">
+                        Sí, sin penalización. Puedes cancelar tu plan en cualquier momento directamente desde el bot de Telegram. No hay cargos ocultos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medical Disclaimer Section -->
+    <section class="py-16 px-4 sm:px-6 gradient-dark">
+        <div class="max-w-3xl mx-auto">
+            <div class="card-glass border-l-4 border-amber-500">
+                <h3 class="text-xl font-bold text-amber-400 mb-4 flex items-center gap-2">
+                    <span class="text-2xl">⚕️</span> Disclaimer Médico-Legal
+                </h3>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    <strong>MedExpert es una herramienta de apoyo clínico basada en IA.</strong> No reemplaza el criterio médico profesional, evaluación clínica directa, ni la responsabilidad del médico tratante.
+                    <br><br>
+                    Las respuestas se generan a partir de guías clínicas indexadas, pero no constituyen diagnóstico ni recomendación terapéutica definitiva. El médico es responsable de validar información con fuentes originales y su experiencia clínica.
+                    <br><br>
+                    En caso de emergencia médica, contacta servicios de salud de urgencia. MedExpert no proporciona atención médica inmediata.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final Section -->
+    <section class="py-20 px-4 sm:px-6 bg-medical-900 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float"></div>
+        </div>
+        <div class="relative z-10 max-w-3xl mx-auto text-center">
+            <h2 class="section-title">¿Listo para potenciar tu práctica?</h2>
+            <p class="section-subtitle">Accede ahora y disfruta 5 consultas gratuitas sin tarjeta de crédito</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://t.me/MedExpertOncologiaBot" target="_blank" class="btn-primary">
+                    Abrir Bot de Telegram
+                </a>
+                <a href="mailto:jmfraga@emergencias.com.mx" class="btn-secondary">
+                    Contactar Soporte
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-medical-900 border-t border-slate-700 py-12 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h4 class="font-bold text-white mb-4">Acerca de</h4>
+                    <p class="text-slate-400 text-sm">MedExpert es una plataforma de apoyo clínico basada en IA para médicos en Latinoamérica.</p>
+                </div>
+
+                <!-- Product -->
+                <div>
+                    <h4 class="font-bold text-white mb-4">Producto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://t.me/MedExpertOncologiaBot" target="_blank" class="text-slate-400 hover:text-teal-400 transition">Bot de Telegram</a></li>
+                        <li><a href="#pricing" class="text-slate-400 hover:text-teal-400 transition">Planes y Precios</a></li>
+                        <li><a href="#faq" class="text-slate-400 hover:text-teal-400 transition">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-bold text-white mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition">Términos de Servicio</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition">Política de Privacidad</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-teal-400 transition">Compliance HIPAA</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold text-white mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="mailto:jmfraga@emergencias.com.mx" class="text-slate-400 hover:text-teal-400 transition">jmfraga@emergencias.com.mx</a></li>
+                        <li><a href="https://t.me/MedExpertOncologiaBot" target="_blank" class="text-slate-400 hover:text-teal-400 transition">Telegram Bot</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-700 pt-8 text-center text-slate-400 text-sm">
+                <p>&copy; 2026 MedExpert. Todos los derechos reservados.</p>
+                <p class="mt-2 text-xs">Herramienta de apoyo clínico. No reemplaza el criterio médico profesional.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        function notify() {
-            alert('¡Gracias! Te notificaremos cuando Medexpert esté listo.');
+        function toggleFAQ(element) {
+            element.classList.toggle('open');
+            const content = element.querySelector('p');
+            if (content) {
+                content.classList.toggle('hidden');
+                content.classList.toggle('group-open:block');
+            }
         }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-glass, section > div').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
