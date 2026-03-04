@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso de Privacidad — MedExpert</title>
+    <meta name="description" content="Aviso de Privacidad de MedExpert. Cómo protegemos tus datos personales y de pacientes.">
+    <meta property="og:title" content="Aviso de Privacidad — MedExpert">
+    <meta property="og:description" content="Protección de datos y privacidad en MedExpert">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .prose-custom h2 { @apply text-2xl font-bold text-slate-800 mt-8 mb-4; }
+        .prose-custom h3 { @apply text-lg font-semibold text-slate-700 mt-6 mb-3; }
+        .prose-custom p { @apply mb-4 text-slate-700 leading-relaxed; }
+        .prose-custom ul { @apply list-disc pl-6 space-y-2 mb-6 text-slate-700; }
+        .prose-custom ol { @apply list-decimal pl-6 space-y-2 mb-6 text-slate-700; }
+        .prose-custom li { @apply mb-2; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-slate-100 text-slate-900">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+            <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700">MedExpert</a>
+                <nav class="flex gap-6 text-sm">
+                    <a href="terminos.html" class="text-slate-600 hover:text-slate-900">Términos</a>
+                    <a href="privacidad.html" class="font-semibold text-blue-600">Privacidad</a>
+                    <a href="hipaa.html" class="text-slate-600 hover:text-slate-900">HIPAA</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 max-w-4xl mx-auto w-full px-6 py-12">
+            <article class="bg-white rounded-xl shadow-lg p-10 prose-custom">
+                <header class="mb-10 pb-8 border-b border-slate-200">
+                    <h1 class="text-4xl font-bold text-slate-800 mb-3">Aviso de Privacidad</h1>
+                    <p class="text-slate-500">MedExpert | Última actualización: 4 de marzo de 2026</p>
+                </header>
+
+                <p class="bg-blue-50 border-l-4 border-blue-600 p-4 mb-8 text-blue-900 rounded">
+                    En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), informamos:
+                </p>
+
+                <section>
+                    <h2>1. Datos que Recopilamos</h2>
+                    <ul>
+                        <li><strong>Datos de registro:</strong> nombre de Telegram, nombre de usuario, correo electrónico.</li>
+                        <li><strong>Datos de uso:</strong> consultas realizadas (anonimizadas), tipo de consulta, feedback.</li>
+                        <li><strong>Datos de pago:</strong> procesados directamente por Stripe, Clip, Mercado Pago o PayPal. MedExpert <strong>NO almacena</strong> números de tarjeta ni datos financieros.</li>
+                        <li><strong>Datos de verificación profesional:</strong> cédula profesional e identificación oficial (almacenados de forma segura, utilizados únicamente para verificación).</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>2. Anonimización Automática</h2>
+                    <p>Todas las consultas clínicas pasan por un proceso de anonimización antes de ser almacenadas. Se eliminan automáticamente:</p>
+                    <ul>
+                        <li>Nombres de pacientes</li>
+                        <li>CURP, RFC, NSS</li>
+                        <li>Correos electrónicos y teléfonos</li>
+                        <li>Números de tarjetas</li>
+                        <li>Direcciones</li>
+                    </ul>
+                    <p><strong>Esto garantiza que ningún dato personal de pacientes se almacene en nuestros sistemas.</strong></p>
+                </section>
+
+                <section>
+                    <h2>3. Finalidad del Tratamiento</h2>
+                    <p>Los datos se utilizan para:</p>
+                    <ul>
+                        <li>Proveer el servicio de consulta clínica.</li>
+                        <li>Mejorar la calidad de las respuestas.</li>
+                        <li>Gestionar suscripciones y facturación.</li>
+                        <li>Comunicar actualizaciones del servicio.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>4. Retención de Datos</h2>
+                    <ul>
+                        <li>Las consultas anonimizadas se eliminan automáticamente después de 30 días.</li>
+                        <li>Los audios de voz se eliminan inmediatamente después de su transcripción.</li>
+                        <li>Los datos de cuenta se conservan mientras la cuenta esté activa.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>5. Derechos ARCO</h2>
+                    <p>Puedes ejercer tus derechos de Acceso, Rectificación, Cancelación y Oposición enviando una solicitud a:</p>
+                    <p class="font-mono bg-slate-100 p-3 rounded inline-block">soporte@medexpert.mx</p>
+                </section>
+
+                <section>
+                    <h2>6. Transferencia de Datos</h2>
+                    <p>No vendemos ni compartimos datos personales con terceros. Los datos de pago son procesados por proveedores certificados PCI-DSS (Stripe, Clip).</p>
+                </section>
+
+                <section>
+                    <h2>7. Seguridad</h2>
+                    <ul>
+                        <li>Comunicación cifrada (HTTPS/TLS).</li>
+                        <li>Base de datos en servidor privado (no cloud público).</li>
+                        <li>Acceso restringido mediante red privada (Tailscale).</li>
+                        <li>Anonimización automática de datos clínicos.</li>
+                    </ul>
+                </section>
+
+                <section class="pb-0">
+                    <h2>8. Contacto</h2>
+                    <p><strong>Oficial de privacidad:</strong> <a href="mailto:soporte@medexpert.mx" class="text-blue-600 font-semibold hover:underline">soporte@medexpert.mx</a></p>
+                </section>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-slate-300 mt-16">
+            <div class="max-w-4xl mx-auto px-6 py-8 text-center text-sm">
+                <p class="mb-4">© 2026 MedExpert. Todos los derechos reservados.</p>
+                <div class="flex justify-center gap-6 mb-4">
+                    <a href="terminos.html" class="hover:text-white">Términos</a>
+                    <a href="privacidad.html" class="hover:text-white">Privacidad</a>
+                    <a href="hipaa.html" class="hover:text-white">HIPAA</a>
+                </div>
+                <p><a href="mailto:soporte@medexpert.mx" class="text-blue-400 hover:text-blue-300">Soporte</a></p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

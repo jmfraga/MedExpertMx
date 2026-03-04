@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumplimiento HIPAA — MedExpert</title>
+    <meta name="description" content="Declaración de cumplimiento HIPAA y medidas de seguridad de datos en MedExpert.">
+    <meta property="og:title" content="Cumplimiento HIPAA — MedExpert">
+    <meta property="og:description" content="Protección HIPAA y seguridad de datos de salud en MedExpert">
+    <meta property="og:type" content="website">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .prose-custom h2 { @apply text-2xl font-bold text-slate-800 mt-8 mb-4; }
+        .prose-custom h3 { @apply text-lg font-semibold text-slate-700 mt-6 mb-3; }
+        .prose-custom p { @apply mb-4 text-slate-700 leading-relaxed; }
+        .prose-custom ul { @apply list-disc pl-6 space-y-2 mb-6 text-slate-700; }
+        .prose-custom ol { @apply list-decimal pl-6 space-y-2 mb-6 text-slate-700; }
+        .prose-custom li { @apply mb-2; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-slate-100 text-slate-900">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+            <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700">MedExpert</a>
+                <nav class="flex gap-6 text-sm">
+                    <a href="terminos.html" class="text-slate-600 hover:text-slate-900">Términos</a>
+                    <a href="privacidad.html" class="text-slate-600 hover:text-slate-900">Privacidad</a>
+                    <a href="hipaa.html" class="font-semibold text-blue-600">HIPAA</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 max-w-4xl mx-auto w-full px-6 py-12">
+            <article class="bg-white rounded-xl shadow-lg p-10 prose-custom">
+                <header class="mb-10 pb-8 border-b border-slate-200">
+                    <h1 class="text-4xl font-bold text-slate-800 mb-3">Cumplimiento HIPAA y Seguridad de Datos</h1>
+                    <p class="text-slate-500">MedExpert | Última actualización: 4 de marzo de 2026</p>
+                </header>
+
+                <section class="bg-green-50 border-l-4 border-green-600 p-6 rounded mb-8">
+                    <h2 class="text-2xl font-bold text-green-900 mb-3">Compromiso con la Protección de Información de Salud</h2>
+                    <p class="text-green-800">MedExpert está diseñado con principios de <strong>privacidad por defecto</strong> (privacy by design) alineados con estándares internacionales de protección de datos de salud, incluyendo lineamientos de <strong>HIPAA</strong> (Health Insurance Portability and Accountability Act) y la <strong>LFPDPPP</strong> mexicana.</p>
+                </section>
+
+                <section>
+                    <h2>Medidas de Protección Implementadas</h2>
+
+                    <h3>Anonimización Automática (De-identification)</h3>
+                    <ul>
+                        <li>Todas las consultas clínicas pasan por un motor de anonimización basado en regex que elimina 8 categorías de información personal identificable (PII) antes del almacenamiento.</li>
+                        <li>Los identificadores eliminados incluyen: nombres, CURP, RFC, NSS, correos electrónicos, teléfonos, números de tarjeta y direcciones.</li>
+                        <li>El texto almacenado no permite la re-identificación de pacientes.</li>
+                    </ul>
+
+                    <h3>Protección de Datos en Tránsito y Reposo</h3>
+                    <ul>
+                        <li>Toda la comunicación utiliza cifrado <strong>TLS</strong> (HTTPS) vía Cloudflare.</li>
+                        <li>La base de datos reside en un servidor físico privado, no en infraestructura cloud compartida.</li>
+                        <li>El acceso administrativo se realiza exclusivamente a través de red privada cifrada (Tailscale/WireGuard).</li>
+                    </ul>
+
+                    <h3>Eliminación Automática de Datos</h3>
+                    <ul>
+                        <li>Los archivos de audio (consultas por voz) se eliminan inmediatamente después de la transcripción.</li>
+                        <li>Las consultas clínicas anonimizadas tienen una retención máxima de 30 días.</li>
+                        <li>No se mantienen registros que permitan reconstruir la identidad de pacientes.</li>
+                    </ul>
+
+                    <h3>Control de Acceso</h3>
+                    <ul>
+                        <li>Panel de administración protegido por red privada.</li>
+                        <li>Verificación de identidad profesional (cédula + INE) para funciones avanzadas.</li>
+                        <li>Sin acceso público a datos de usuarios o consultas.</li>
+                    </ul>
+
+                    <h3>Procesamiento de Pagos</h3>
+                    <ul>
+                        <li>MedExpert <strong>NO almacena</strong> datos de tarjetas de crédito/débito.</li>
+                        <li>Los pagos son procesados por proveedores certificados PCI-DSS (Stripe, Clip).</li>
+                    </ul>
+                </section>
+
+                <section class="bg-yellow-50 border-l-4 border-yellow-600 p-6 rounded my-8">
+                    <h2 class="text-2xl font-bold text-yellow-900 mb-3">⚠️ Nota Importante</h2>
+                    <p class="text-yellow-800 mb-4">MedExpert <strong>es una herramienta de apoyo clínico</strong>. No almacena expedientes clínicos ni funciona como sistema de registro médico electrónico (EMR/EHR).</p>
+                    <p class="text-yellow-800"><strong>La responsabilidad del manejo del expediente clínico del paciente recae en el profesional de la salud y su institución.</strong></p>
+                </section>
+
+                <section class="pb-0">
+                    <h2>Contacto</h2>
+                    <p>Para consultas sobre seguridad y privacidad:</p>
+                    <p class="font-mono bg-slate-100 p-3 rounded inline-block"><a href="mailto:soporte@medexpert.mx" class="text-blue-600 font-semibold hover:underline">soporte@medexpert.mx</a></p>
+                </section>
+            </article>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-slate-900 text-slate-300 mt-16">
+            <div class="max-w-4xl mx-auto px-6 py-8 text-center text-sm">
+                <p class="mb-4">© 2026 MedExpert. Todos los derechos reservados.</p>
+                <div class="flex justify-center gap-6 mb-4">
+                    <a href="terminos.html" class="hover:text-white">Términos</a>
+                    <a href="privacidad.html" class="hover:text-white">Privacidad</a>
+                    <a href="hipaa.html" class="hover:text-white">HIPAA</a>
+                </div>
+                <p><a href="mailto:soporte@medexpert.mx" class="text-blue-400 hover:text-blue-300">Soporte</a></p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
